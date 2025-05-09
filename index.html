@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chatbot PWA</title>
+
+  <!-- Manifesto do PWA -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Ícone do app (opcional) -->
+  <link rel="icon" href="icon.png">
+
+  <!-- Freshchat Script -->
+  <script src='//fw-cdn.com/11855826/4444188.js' chat='true'> </script>
+  <script>
+    window.fcWidget.init({
+      token: "SEU_TOKEN_DO_BOT",
+      host: "https://wchat.freshchat.com"
+    });
+  </script>
+</head>
+<body>
+  <p>Carregando o bot...</p>
+
+  <!-- Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(reg => console.log('Service Worker registrado!', reg))
+        .catch(err => console.error('Erro no Service Worker:', err));
+    }
+  </script>
+</body>
+</html>
